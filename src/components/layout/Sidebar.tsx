@@ -47,14 +47,14 @@ return (
           <img 
             src="/logo_new.jpeg" 
             alt="Pulse Logo" 
-            className="w-32 h-auto object-contain rounded-xl" 
+            // CHANGED: w-32 -> w-56 (You can also use w-48 or w-full)
+            className="w-56 h-auto object-contain rounded-xl" 
           />
-
           <div>
             {/* --- UPDATED FONT SIZE --- */}
             {/* Changed from text-xl to text-3xl */}
             <h1 className={`text-3xl font-bold tracking-tight ${accentText}`}>
-              Pulse
+           
             </h1>
             <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-1 leading-tight">
               Bat Species Identification and Call Analysis
