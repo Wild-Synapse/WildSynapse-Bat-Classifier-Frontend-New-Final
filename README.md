@@ -1,1 +1,2 @@
-# WildSynapse-Bat-Classifier-Frontend-New-Final
+# WildSynapse-Bat-Classifier-Frontend
+Frontend through react (TSX) + Tailwind
