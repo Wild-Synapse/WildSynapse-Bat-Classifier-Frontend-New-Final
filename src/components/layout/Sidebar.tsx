@@ -38,21 +38,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
     ? 'hover:bg-slate-800/50 text-slate-400 hover:text-white' 
     : 'hover:bg-slate-100 text-slate-600';
 
-  return (
+return (
     <aside className={`fixed left-0 top-0 h-full w-72 ${darkMode ? 'bg-slate-900/95' : 'bg-white/95'} backdrop-blur-xl border-r ${darkMode ? 'border-slate-800' : 'border-slate-200'} z-50 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
       <div className="p-6 border-b border-slate-800/50">
-        <div className="flex items-center gap-3 mb-6">
-          <div className={`${accentGradient} p-3 rounded-2xl shadow-lg shadow-cyan-500/20`}>
-            <BrainCircuit className="w-7 h-7 text-white" />
-          </div>
+        
+        <div className="flex flex-col items-center text-center gap-4 mb-6">
+          
+          <img 
+            src="/logo_new.jpeg" 
+            alt="Pulse Logo" 
+            className="w-32 h-auto object-contain rounded-xl" 
+          />
+
           <div>
-            <h1 className={`text-xl font-bold tracking-tight ${accentText}`}>
+            {/* --- UPDATED FONT SIZE --- */}
+            {/* Changed from text-xl to text-3xl */}
+            <h1 className={`text-3xl font-bold tracking-tight ${accentText}`}>
               Pulse
             </h1>
-            <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">Bat Species Identification and Call Analysis</p>
+            <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-1 leading-tight">
+              Bat Species Identification and Call Analysis
+            </p>
           </div>
         </div>
-
       
       </div>
 
@@ -104,4 +112,4 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
     </aside>
   );
-};
+}

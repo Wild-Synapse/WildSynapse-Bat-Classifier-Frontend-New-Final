@@ -16,7 +16,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ darkMode, sidebarOpe
           {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
         <h1 className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-          BioAcoustic AI
+          Pulse
         </h1>
         <button onClick={onRefresh} className="p-2">
           <RefreshCw className="w-5 h-5 text-cyan-500" />
