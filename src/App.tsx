@@ -11,7 +11,7 @@ import { ChatAssistant } from './pages/ChatAssistant';
 import { SettingsPage } from './pages/SettingsPage';
 import { AnalysisResult, HealthStatus, Statistics } from './types';
 
-const API_BASE = 'https://wildsynapse-bat-classifier-backend-570998533708.europe-west1.run.app';
+const API_BASE = 'http://localhost:8000';
 
 const BatAnalyzerApp = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');

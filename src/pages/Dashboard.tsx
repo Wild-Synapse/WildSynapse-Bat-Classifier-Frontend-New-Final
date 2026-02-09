@@ -104,7 +104,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ darkMode, healthStatus, st
               { label: 'Total Analyses', value: statistics.total_analyses.toLocaleString(), sub: 'Files Processed', icon: FileAudio, from: 'from-cyan-500', to: 'to-blue-500', text: 'text-cyan-400' },
               { label: 'Monitoring Time', value: statistics.total_duration_hours.toFixed(1), sub: 'Hours Logged', icon: Clock, from: 'from-blue-500', to: 'to-indigo-500', text: 'text-blue-400' },
               { label: 'Biodiversity', value: statistics.unique_species_detected, sub: 'Species Identified', icon: Target, from: 'from-indigo-500', to: 'to-purple-500', text: 'text-indigo-400' },
-              { label: 'Database', value: statistics.storage_type, sub: 'Storage Engine', icon: Database, from: 'from-purple-500', to: 'to-pink-500', text: 'text-purple-400' },
             ].map((stat, idx) => (
               <div key={idx} className={`${glassPanelClass} rounded-2xl p-6 relative overflow-hidden group`}>
                 <div className={`absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500`}>
