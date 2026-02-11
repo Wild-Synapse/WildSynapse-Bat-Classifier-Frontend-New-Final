@@ -8,8 +8,9 @@ export type CallParameters = {
   end_frequency: number;
   peak_frequency: number;
   bandwidth: number;
+  intensity: number;
   pulse_duration: number;
-  intensity?: number;
+  total_length: number;
   shape: string;
 };
 

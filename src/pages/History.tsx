@@ -500,10 +500,10 @@ export const History: React.FC<HistoryProps> = ({ darkMode, results, loading, AP
                   </div>
 
                   <div className="mb-8 flex gap-4">
-                    <button onClick={(e) => { e.stopPropagation(); downloadFile(`${API_BASE}/api/download/excel/batch/${batch.batch_id}`); }} className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-green-600/10 hover:bg-green-600/20 border border-green-500/20 rounded-xl transition-all text-green-400 font-bold">
+                    <button onClick={(e) => { e.stopPropagation(); downloadFile(`${API_BASE}/api/download/batch/${batch.batch_id}/excel`); }} className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-green-600/10 hover:bg-green-600/20 border border-green-500/20 rounded-xl transition-all text-green-400 font-bold">
                       <Table className="w-5 h-5" /> Export Excel
                     </button>
-                    <button onClick={(e) => { e.stopPropagation(); downloadFile(`${API_BASE}/api/download/pdf/batch/${batch.batch_id}`); }} className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 rounded-xl transition-all text-red-400 font-bold">
+                    <button onClick={(e) => { e.stopPropagation(); downloadFile(`${API_BASE}/api/download/batch/${batch.batch_id}/pdf`); }} className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 rounded-xl transition-all text-red-400 font-bold">
                       <FileText className="w-5 h-5" /> Export Report
                     </button>
                   </div>

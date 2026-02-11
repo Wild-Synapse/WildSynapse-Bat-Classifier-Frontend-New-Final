@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, FileAudio, ImageIcon, Settings, CheckCircle, RefreshCw, Zap, Pause, Play, FileText, Activity, Waves, Clock, Mic, Target, AlertCircle, BarChart3 } from 'lucide-react';
+import { Upload, FileAudio, ImageIcon, Settings, CheckCircle, RefreshCw, Zap, Pause, Play, FileText, Activity, Waves, Clock, Mic, Target, AlertCircle, BarChart3, Table } from 'lucide-react';
 import { AnalysisResult } from '../types';
 
 interface SingleAnalysisProps {
@@ -56,6 +56,20 @@ export const SingleAnalysis: React.FC<SingleAnalysisProps> = ({
       a.click();
     } catch (error) {
       alert('PDF download failed');
+    }
+  };
+
+  const handleDownloadExcel = async (fileId: string) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/download/excel/${fileId}`);
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `bat_analysis_${fileId}.xlsx`;
+      a.click();
+    } catch (error) {
+      alert('Excel download failed');
     }
   };
 
@@ -271,21 +285,34 @@ export const SingleAnalysis: React.FC<SingleAnalysisProps> = ({
                         <p className="text-xs text-slate-500">Time-expanded (10x slower)</p>
                       </div>
                     </div>
-                    <button
-                      onClick={() => handleDownloadPDF(currentResult.file_id)}
-                      className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm font-bold text-slate-300 transition-colors border border-slate-700"
-                    >
-                      <FileText className="w-4 h-4 inline mr-2" />
-                      PDF Report
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleDownloadPDF(currentResult.file_id)}
+                        className="flex-1 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm font-bold text-slate-300 transition-colors border border-slate-700"
+                      >
+                        <FileText className="w-4 h-4 inline mr-2" />
+                        PDF Report
+                      </button>
+                      <button
+                        onClick={() => handleDownloadExcel(currentResult.file_id)}
+                        className="flex-1 px-5 py-2.5 rounded-xl bg-green-800 hover:bg-green-700 text-sm font-bold text-green-300 transition-colors border border-green-700"
+                      >
+                        <Table className="w-4 h-4 inline mr-2" />
+                        Excel Report
+                      </button>
+                    </div>
                   </div>
                 )}
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { label: 'Peak Freq', val: `${currentResult.call_parameters.peak_frequency} kHz`, icon: Activity },
-                    { label: 'Bandwidth', val: `${currentResult.call_parameters.bandwidth} kHz`, icon: Waves },
-                    { label: 'Duration', val: `${currentResult.call_parameters.pulse_duration} ms`, icon: Clock },
+                    { label: 'Start Freq', val: `${currentResult.call_parameters.start_frequency.toFixed(1)} kHz`, icon: Activity },
+                    { label: 'Peak Freq', val: `${currentResult.call_parameters.peak_frequency.toFixed(1)} kHz`, icon: Activity },
+                    { label: 'End Freq', val: `${currentResult.call_parameters.end_frequency.toFixed(1)} kHz`, icon: Activity },
+                    { label: 'Bandwidth', val: `${currentResult.call_parameters.bandwidth.toFixed(1)} kHz`, icon: Waves },
+                    { label: 'Intensity', val: `${currentResult.call_parameters.intensity.toFixed(1)} dB`, icon: Zap },
+                    { label: 'Pulse Duration', val: `${currentResult.call_parameters.pulse_duration.toFixed(2)} ms`, icon: Clock },
+                    { label: 'Total Length', val: `${currentResult.call_parameters.total_length.toFixed(2)} ms`, icon: Clock },
                     { label: 'Shape', val: currentResult.call_parameters.shape, icon: Mic }
                   ].map((p, i) => (
                     <div key={i} className={`p-4 rounded-xl border text-center ${darkMode ? 'bg-slate-900/50 border-slate-800 backdrop-blur-sm' : 'bg-white border-slate-200'} hover:border-cyan-500/50 transition-all`}>
